@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="3D Gaussian Splatting with Deferred Reflection">
+  <meta name="keywords" content="XXX, XXX">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Gaussian Splatting with Deferred Reflection</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">3D Gaussian Splatting with Deferred Reflection</h1>
+          <h1 style="font-size:1.5rem"> SIGGRAPH 2024<br></h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Keyang Ye,</span>
+            <span class="author-block">
+              <a href="https://www.houqiming.net/">Qiming Hou</a>,</span>
+            <span class="author-block">
+              <a href="http://kunzhou.net/">Kun Zhou</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">State Key Lab of CAD & CG, Zhejiang University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="static\pdf\3DGS_DR.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="NA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/j32vV6UIGeo"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://gapszju.github.com/3DGS-DR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-ball">
+          <video poster="" id="ball" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/ball.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-cat">
+          <video poster="" id="cat" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/cat.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-car">
+          <video poster="" id="car" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/car.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-bell">
+          <video poster="" id="bell" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/bell.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-teapot">
+          <video poster="" id="teapot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toaster.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-helmet">
+          <video poster="" id="helmet" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/helmet.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-sedan">
+          <video poster="" id="sedan" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sedan.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toycar">
+          <video poster="" id="toycar" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toycar.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The advent of neural and Gaussian-based radiance field methods have achieved great success 
+            in the field of novel view synthesis. However, specular reflection remains non-trivial, 
+            as the high frequency radiance field is notoriously difficult to fit stably and accurately. 
+            We present a deferred shading method to effectively render specular reflection with Gaussian splatting. 
+            The key challenge comes from the environment map reflection model, 
+            which requires accurate surface normal while simultaneously bottlenecks normal estimation with 
+            discontinuous gradients. We leverage the per-pixel reflection gradients generated by deferred shading 
+            to bridge the optimization process of neighboring Gaussians, 
+            allowing nearly correct normal estimations to gradually propagate and eventually spread over all 
+            reflective objects. Our method significantly outperforms state-of-the-art techniques and concurrent 
+            work in synthesizing high-quality specular reflection effects, demonstrating a consistent improvement 
+            of peak signal-to-noise ratio (PSNR) for both synthetic and real-world scenes, while running at a frame 
+            rate almost identical to vanilla Gaussian splatting.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="1210" height="681" src="https://www.youtube.com/embed/j32vV6UIGeo" 
+          title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Pipeline</h2>
+
+        <!-- Prop. -->
+        <div class="content has-text-justified">
+          <p>
+            Our deferred rendering model consists of two passes. 
+            A Gaussian splatting pass is first performed to bake reflection strength, normal, and base color 
+            to screen space maps. In the following shading pass, for each pixel, we use the normal map to 
+            compute a reflection direction and query an environment map for a reflected color. 
+            The reflection strength is then used to blend base color and reflection color into the final result. 
+            An image loss is used to back-propagate gradients. 
+            Note that there exist many gradient propagation paths. 
+            Here we only illustrate the gradient flow most relevant to reflection fitting.
+          </p>
+        </div>
+
+        <div class="content has-text-centered">
+          <img src="./static/images/pipeline.png" class="center">
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Normal Propagation</h2>
+
+        <!-- Prop. -->
+        <div class="content has-text-justified">
+          <p>
+            We present a training algorithm featuring <b>normal propagation</b>. 
+            Specifically, based on the observation that Gaussians with relative large reflective strength values 
+            have near-correct normal vectors, we expand these reflective Gaussians to propagate their normal 
+            vectors to nearby Gaussians. In this way, after one Gaussian with near-correct normal overlaps a 
+            different Gaussian without one, some shared pixels can also have near-correct normal, 
+            which will get meaningful normal gradients, helping to optimize the normal of the later Gaussian.
+          </p>
+        </div>
+
+        <div class="content has-text-centered">
+          <video id="prop-video"
+                 controls
+                 muted
+                 loop
+                 preload
+                 playsinline
+                 width="85%">
+            <source src="./static/videos/normal_prop.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Visual Comparisons</h2>
+      <div class="content has-text-justified">
+        <p>
+  
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <!-- Visual Effects. -->
+        <div class="column">
+          <div class="content">
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <div id="example1" class="bal-container-small">
+        
+                  <div class="bal-after">
+                    <img src="./static/images/ball_our.png">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Ours
+                    </div>
+                  </div>
+                
+                  <div class="bal-before" style="width:50%;">
+                    <div class="bal-before-inset" style="width: 628px;">
+                    <img src="./static/images/ball_3dgs.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        3DGS [Kerbl et al. 2023]
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle" style="left:50%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+  
+  
+                <div id="example2" class="bal-container-small">
+        
+                  <div class="bal-after">
+                    <img src="./static/images/toaster_our.png">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Ours
+                    </div>
+                  </div>
+                
+                  <div class="bal-before" style="width:50%;">
+                    <div class="bal-before-inset" style="width: 628px;">
+                    <img src="./static/images/toaster_gs.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        GShader [Jiang et al. 2023]
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle" style="left:50%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+             
+              <div id="example3" class="bal-container-small">
+        
+                <div class="bal-after">
+                  <img src="./static/images/luyu_our.jpg">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+              
+                <div class="bal-before" style="width:50%;">
+                  <div class="bal-before-inset" style="width: 628px;">
+                  <img src="./static/images/luyu_envidr.jpg">
+                    <div class="bal-beforePosition beforeLabel">
+                      ENVIDR [Liang et al. 2023]
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="bal-handle" style="left:50%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+              
+              </div>
+  
+              <div id="example4" class="bal-container-small">
+        
+                <div class="bal-after">
+                  <img src="./static/images/sedan_our.png">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+              
+                <div class="bal-before" style="width:50%;">
+                  <div class="bal-before-inset" style="width: 628px;">
+                  <img src="./static/images/sedan_ref.png">
+                    <div class="bal-beforePosition beforeLabel">
+                      Ref-NeRF [Verbin et al. 2022]
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="bal-handle" style="left:50%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">References</h2>
+
+        <!-- Prop. -->
+        <div class="content has-text-justified">
+          <p>
+            [Kerbl et al. 2023] Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler, and George Drettakis. 2023.
+            3D Gaussian Splatting for Real-Time Radiance Field Rendering. ACM Transactions
+            on Graphics (SIGGRAPH Conference Proceedings) 42, 4 (July 2023).
+          </p>
+          <p>
+            [Jiang et al. 2023] Yingwenqi Jiang, Jiadong Tu, Yuan Liu, Xifeng Gao, Xiaoxiao Long, Wenping Wang, and
+            Yuexin Ma. 2023. GaussianShader: 3D Gaussian Splatting with Shading Functions
+            for Reflective Surfaces. arXiv:2311.17977 [cs.CV]
+          </p>
+          <p>
+            [Liang et al. 2023] Ruofan Liang, Huiting Chen, Chunlin Li, Fan Chen, Selvakumar Panneer, and Nandita
+            Vijaykumar. 2023. Envidr: Implicit differentiable renderer with neural environment
+            lighting. In Proceedings of the IEEE/CVF International Conference on Computer Vision.
+            79-89.
+          </p>
+          <p>
+            [Verbin et al. 2022] Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler, Jonathan T Barron, and
+            Pratul P Srinivasan. 2022. Ref-nerf: Structured view-dependent appearance for
+            neural radiance fields. In 2022 IEEE/CVF Conference on Computer Vision and Pattern
+            Recognition (CVPR). IEEE, 5481-5490.
+          </p>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{ye2024gsdr,
+  author    = {Keyang, Ye and Qiming, Hou and Kun, Zhou},
+  title     = {3D Gaussian Splatting with Deferred Reflection},
+  booktitle  = {ACM SIGGRAPH Conference Proceddings, Denver, CO, United States, July 28 - August 1, 2024},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="static\pdf\3DGS_DR.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://gapszju.github.com/3DGS-DR" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the template of this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="static/js/script.js"></script>
+
+<script>
+    new BeforeAfter({
+        id: '#example1'
+    });
+    new BeforeAfter({
+        id: '#example2'
+    });
+    new BeforeAfter({
+        id: '#example3'
+    });
+    new BeforeAfter({
+        id: '#example4'
+    });
+
+</script>
+
+</body>
+</html>
