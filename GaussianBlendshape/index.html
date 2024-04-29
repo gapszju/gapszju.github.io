@@ -1,12 +1,446 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="3D Gaussian Blendshapes for Head Avatar Animation">
+  <meta name="keywords" content="Parametric face models, facial animation, facial tracking, facial reenactment">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Gaussian Blendshapes for Head Avatar Animation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script> 
+  
+
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a simple HTML page.</p>
+
+      <!--
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+    -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">3D Gaussian Blendshapes for Head Avatar Animation</h1>
+          <h2 class="title is-4 publication-title" style="color:#6e6e6e;margin-top: 2; margin-bottom: 2">ACM SIGGRAPH 2024</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Shengjie Ma,</span>
+            <span class="author-block">
+              Yanlin Weng,</span>
+            <span class="author-block">
+              <a href="https://tianjiashao.com">Tianjia Shao</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://kunzhou.net">Kun Zhou</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">State Key Lab of CAD&CG, Zhejiang University</span>
+            <!-- <span class="author-block"><sup>2</sup>ZJU-FaceUnity Joint Lab of Intelligent Graphics</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!--
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              -->
+              
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ZJUMSJ/TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!--
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+     -->
+     <img src="./static/images/teaser7_crop.png" class="center">
+
+     
+     <h2 class="subtitle has-text-centered" style="margin-top: 15px">
+        Our 3D Gaussian blendshapes are analogous to mesh blendshapes in classical parametric face models, which can be linearly blended with expressions coefficients to synthesize photo-realistic avatar animations in real time (370fps).  
+      </h2>
+    </div>
+
+  </div>
+</section>
+
+
+<!--
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths"> 
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce 3D Gaussian blendshapes for modeling photorealistic head avatars. Taking a monocular video as input, we learn a base head model of neutral expression, along with a group of expression blendshapes, each of which corresponds to a basis expression in classical parametric face models. Both the neutral model and expression blendshapes are represented as 3D Gaussians, which contain a few properties to depict the avatar appearance. The avatar model of an arbitrary expression can be effectively generated by combining the neutral model and expression blendshapes through linear blending of Gaussians with the expression coefficients. High-fidelity head avatar animations can be synthesized in real time using Gaussian splatting. Compared to state-of-the-art methods, our Gaussian blendshape representation better captures high-frequency details exhibited in input video, and achieves superior rendering performance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- Paper video. TODO -->    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Live Demo -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Live Demo</h2>
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" preload="" playsinline="" loop="" width="80%">
+            <source src="./static/videos/livedemo_v0.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Live demo -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Pipeline -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Pipeline</h2>
+        <img src="./static/images/pipeline_final2_crop.png" class="center">
+        <div class="content has-text-justified">
+          <p style="margin-top: 30px">
+            Taking a monocular video as input, our method learns a Gaussian blendshape representation of a head avatar, which consists of a neutral model \( B_0 \), a group of expression blendshapes \( B_1,B_2,...,B_K \), and the mouth interior model \( B_m \), all represented as 3D Gaussians. Avatar models of arbitrary expressions and poses can be generated by linear blending with expression coefficients \( \psi'_k \) and linear blend skinning with joint and pose parameters \( \Theta' \), from which we render high-fidelity images in real time using Gaussian splatting.
+          </p>
+        </div>
+
+        <!-- <p> <FONT COLOR="#ff0000">TODO </FONT> </p> -->
+
+        
+        <div class="content has-text-centered">
+          
+          <video id="replay-video" controls="" preload="" playsinline="" loop="" width="100%">
+            <source src="./static/videos/introduction_v0.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+
+      </div>
+    </div>
+    <!--/ Pipeline -->
+
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Results. -->
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Comparisons</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We compare our method with three state-of-the-art methods. Our method is better at capturing high-frequency details observed in the training video, such as wrinkles, teeth, and specular highlights of glasses and noses. A unique advantage of our method is that it only requires linear blending of Gaussian blnedshapes to construct a head avatar of arbitrary expressions, which brings significant benefits in both training and runtime performance. Our method is able to synthesize facial animations at 370fps, over 5x faster than INSTA and about 14x faster than NeRFBlendshape. 
+          </p>
+        </div>
+
+        
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" preload="" playsinline="" loop="" width="100%">
+            <source src="./static/videos/comparison_v0.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered" style="margin-top: -30px">More Results</h2>
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item id4">
+          <video poster="" id="id4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more_results_id4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item id3">
+          <video poster="" id="id3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more_results_id3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item id5">
+          <video poster="" id="id5" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more_results_id5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item malte_1">
+          <video poster="" id="malte_1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more_results_malte_1.mp4"  type="video/mp4">
+          </video>
+        </div>
+        <div class="item txh2">
+          <video poster="" id="txh2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more_results_txh2.mp4"  type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        We present a novel 3D Gaussian blendshape representation for animating photorealistic head avatars. We also introduce an optimization process to learn the Gaussian blendshapes from a monocular video, which are semantically consistent with their corresponding mesh blendshapes. Our method outperforms state-of-the-art NeRF and point based methods in producing avatar animations of superiorquality at significantly faster speeds, while the training and memory cost is moderate.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{ma2024gaussianblendshapes,
+  author     = {Shengjie Ma and Yanlin Weng and Tianjia Shao and Kun Zhou},
+  title      = {3D Gaussian Blendshapes for Head Avatar Animation},
+  booktitle  = {ACM SIGGRAPH Conference Proceddings, Denver, CO, United States, July 28 - August 1, 2024},
+  year       = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!--
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+      -->
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
