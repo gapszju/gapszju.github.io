@@ -155,18 +155,16 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              An algorithmic integration of simultaneous localization and mapping (SLAM) systems and follow-up vision-based tasks
-              presents a significant challenge due to the complexity of SLAM. To address this issue, we propose X-SLAM, a real-time
-              dense differentiable SLAM system that leverages the complex-step finite difference (CSFD) method for the efficient
-              calculation of numerical derivatives, bypassing the need for a large-scale computational graph. The key to our approach
-              is treating the entire SLAM process as a differentiable function, enabling the calculation of the derivatives of any
-              variable at any time point through Taylor series expansion within the complex domain. Our system allows for the
-              real-time calculation of not just the gradient, but also higher-order differentiation. This facilitates the use of
-              high-order optimizers to achieve better accuracy and faster convergence. Building on the X-SLAM, we implemented
+              We present X-SLAM, a real-time dense differentiable SLAM system that leverages the complex-step finite difference (CSFD)
+              method for efficient calculation of numerical derivatives, bypassing the need for a large-scale computational graph. The
+              key to our approach is treating the SLAM process as a differentiable function, enabling the calculation of the
+              derivatives of important SLAM parameters through Taylor series expansion within the complex domain. Our system allows
+              for the real-time calculation of not just the gradient, but also higher-order differentiation. This facilitates the use
+              of high-order optimizers to achieve better accuracy and faster convergence. Building on X-SLAM, we implemented
               end-to-end optimization frameworks for two important tasks: camera relocalization in wide outdoor scenes and active
               robotic scanning in complex indoor environments. Comprehensive evaluations on public benchmarks and intricate real
               scenes underscore the improvements in the accuracy of camera relocalization and the efficiency of robotic navigation
-              achieved through our task-aware optimization. The source code will be released upon acceptance.
+              achieved through our task-aware optimization. The code and data are at \url{https://gapszju.github.io/X-SLAM}
             </p>
           </div>
         </div>
