@@ -219,25 +219,70 @@
   </section>
   <!-- End result Video -->
 
-    <!-- result Video-->
-    <section class="hero is-small is-light">
-      <div class="hero-body">
-        <div class="container">
-          <h2 class="title is-3">More results</h2>
-          <video poster="" id="tree" autoplay controls muted loop height="100%">
-            <!-- Your video here -->
-            <source src="static/videos/Supplementary_Video_04.mp4" type="video/mp4">
-          </video>
-          <video poster="" id="tree" autoplay controls muted loop height="100%">
-            <!-- Your video here -->
-            <source src="static/videos/Supplementary_Video_05.mp4" type="video/mp4">
-          </video>
+  <!-- Video carousel -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">More results</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-video1">
+            <video poster="" id="video1" autoplay controls muted loop height="100%">
+              <!-- Your video file here -->
+              <source src="static/videos/Supplementary_Video_04.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video2">
+            <video poster="" id="video2" autoplay controls muted loop height="100%">
+              <!-- Your video file here -->
+              <source src="static/videos/Supplementary_Video_05.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
-    </section>
-    <!-- End result Video -->
+    </div>
+  </section>
+  <!-- End video carousel -->
 
 
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Comparison</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <!-- Your image here -->
+          <img src="static/images/Table_7.png" alt="MY ALT TEXT" />
+          <!-- <h2 class="subtitle has-text-centered">
+            First image description.
+          </h2> -->
+        </div>
+        <div class="item">
+          <!-- Your image here -->
+          <img src="static/images/Figure_5.png" alt="MY ALT TEXT" />
+          <!-- <h2 class="subtitle has-text-centered">
+                    First image description.
+                  </h2> -->
+        </div>
+        <!-- <div class="item">
+          <img src="static/images/Figure_8.png" alt="MY ALT TEXT" />
+        </div> -->
+        <div class="item">
+          <!-- Your image here -->
+          <img src="static/images/Figure_9.png" alt="MY ALT TEXT" />
+          <!-- <h2 class="subtitle has-text-centered">
+            Second image description.
+          </h2> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End image carousel -->
+
+
+
+    
   <!--BibTex citation -->
   <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
@@ -257,9 +302,7 @@
             <p>
               We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the template of this
               website.
-
             </p>
-
           </div>
         </div>
       </div>
