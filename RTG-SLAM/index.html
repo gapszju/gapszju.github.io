@@ -52,7 +52,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">RTG-SLAM: Real-time 3D Reconstruction at Scale using Gaussian
+            <h1 class="title is-1 publication-title">RTG-SLAM: Real-time 3D Reconstruction<br>at Scale Using Gaussian
               Splatting</h1>
             <div class="is-size-5 publication-authors">
               <h1 style="font-size:1.5rem; color:#6e6e6e; font-weight: 550;"> ACM SIGGRAPH 2024<br></h1>
@@ -160,32 +160,21 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We propose RTG-SLAM, a real-time 3D reconstruction system with an RGBD camera for large-scale environments
-              using Gaussian splatting. RTG-SLAM features a compact Gaussian representation and a highly efficient
-              on-the-fly
-              Gaussian optimization scheme. We force each Gaussian to be either opaque or nearly transparent, with the
-              opaque
-              ones fitting the surface and dominant colors, and transparent ones fitting residual colors. By rendering
-              depth in a
-              different way from color rendering, we let a single opaque Gaussian well fit a local surface region
-              without the need of
-              multiple overlapping Gaussians, hence largely reducing the memory and computation cost. For on-the-fly
-              Gaussian
-              optimization, we explicitly add Gaussians for three types of pixels per frame: newly observed, with large
-              color errors and
-              with large depth errors. We also categorize all Gaussians into stable and unstable ones, where the stable
-              Gaussians
-              are expected to well fit previously observed RGBD images and otherwise unstable. We only optimize the
-              unstable Gaussians
-              and only render the pixels occupied by unstable Gaussians. In this way, both the number of Gaussians to be
-              optimized and
-              pixels to be rendered are largely reduced, and the optimization can be done in real time. We show
-              real-time
-              reconstructions of a variety of real large scenes. Compared with the state-of-the-art NeRF-based RGBD
-              SLAM, our system achieves
-              comparable high-quality reconstruction but with around twice the speed and half the memory cost, and shows
-              superior
-              performance in the realism of novel view synthesis and camera tracking accuracy.
+              We present Real-time Gaussian SLAM (RTG-SLAM), a real-time 3D reconstruction system with an RGBD camera for large-scale
+              environments using Gaussian splatting. The system features a compact Gaussian representation and a highly efficient
+              on-the-fly Gaussian optimization scheme. We force each Gaussian to be either opaque or nearly transparent, with the
+              opaque ones fitting the surface and dominant colors, and transparent ones fitting residual colors.
+              By rendering depth in a different way from color rendering, we let a single opaque Gaussian well fit a local surface
+              region without the need of multiple overlapping Gaussians, hence largely reducing the memory and computation cost. For
+              on-the-fly Gaussian optimization, we explicitly add Gaussians for three types of pixels per frame: newly observed, with
+              large color errors, and with large depth errors. We also categorize all Gaussians into stable and unstable ones, where
+              the stable Gaussians are expected to well fit previously observed RGBD images and otherwise unstable. We only optimize
+              the unstable Gaussians and only render the pixels occupied by unstable Gaussians. In this way, both the number of
+              Gaussians to be optimized and pixels to be rendered are largely reduced, and the optimization can be done in real time.
+              We show real-time reconstructions of a variety of large scenes.
+              Compared with the state-of-the-art NeRF-based RGBD SLAM, our system achieves comparable high-quality reconstruction but
+              with around twice the speed and half the memory cost, and shows superior performance in the realism of novel view
+              synthesis and camera tracking accuracy.
             </p>
           </div>
         </div>
