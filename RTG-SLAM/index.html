@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>RTG-SLAM: Real-time 3D Reconstruction at Scale Using Gaussian Splatting</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">RTG-SLAM: Real-time 3D Reconstruction<br>at Scale Using Gaussian
+              Splatting</h1>
+            <div class="is-size-5 publication-authors">
+              <h1 style="font-size:1.5rem; color:#6e6e6e; font-weight: 550;"> ACM SIGGRAPH 2024<br></h1>
+              <!-- Paper authors -->
+              <span class="author-block">
+                Zhexi Peng<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://tianjiashao.com/" target="_blank">Tianjia Shao</a><sup>1</sup>,</span>
+              <span class="author-block">
+                Liu Yong<sup>1</sup>,</span>
+              <span class="author-block">
+                Jingke Zhou<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://yangzzzy.github.io/" target="_blank">Yin Yang</a><sup>2</sup>,</span>
+              <span class="author-block">
+                Jingdong Wang<sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="http://kunzhou.net/" target="_blank">Kun Zhou</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>State Key Lab of CAD&CG, Zhejiang University,
+                <sup>2</sup>University of Utah, <sup>3</sup>Baidu Research
+              </span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="static/pdfs/RTG-SLAM_arxiv.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- Supplementary PDF link -->
+                <!-- <span class="link-block">
+                  <a href="static/pdfs/RTG-SLAM_supplementary.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Supplementary</span>
+                  </a>
+                </span> -->
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/MisEty/RTG-SLAM" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <!-- <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser Image-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/teaser.png" alt="MY ALT TEXT" />
+        <h2 class="subtitle has-text-centered">
+          A hotel room reconstructed by our system and the state-of-the-art NeRF-based RGBD SLAM techniques
+          (Co-SLAM,Point-SLAM) without any post-processing. Compared with the state-of-the-art NeRF-based RGBD SLAM, our
+          system achieves comparable high-quality
+          reconstruction but with around twice the speed and half the memory cost, and shows higher realism in novel
+          view synthesis.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser Image -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We present Real-time Gaussian SLAM (RTG-SLAM), a real-time 3D reconstruction system with an RGBD camera for large-scale
+              environments using Gaussian splatting. The system features a compact Gaussian representation and a highly efficient
+              on-the-fly Gaussian optimization scheme. We force each Gaussian to be either opaque or nearly transparent, with the
+              opaque ones fitting the surface and dominant colors, and transparent ones fitting residual colors.
+              By rendering depth in a different way from color rendering, we let a single opaque Gaussian well fit a local surface
+              region without the need of multiple overlapping Gaussians, hence largely reducing the memory and computation cost. For
+              on-the-fly Gaussian optimization, we explicitly add Gaussians for three types of pixels per frame: newly observed, with
+              large color errors, and with large depth errors. We also categorize all Gaussians into stable and unstable ones, where
+              the stable Gaussians are expected to well fit previously observed RGBD images and otherwise unstable. We only optimize
+              the unstable Gaussians and only render the pixels occupied by unstable Gaussians. In this way, both the number of
+              Gaussians to be optimized and pixels to be rendered are largely reduced, and the optimization can be done in real time.
+              We show real-time reconstructions of a variety of large scenes.
+              Compared with the state-of-the-art NeRF-based RGBD SLAM, our system achieves comparable high-quality reconstruction but
+              with around twice the speed and half the memory cost, and shows superior performance in the realism of novel view
+              synthesis and camera tracking accuracy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Real-time Reconstruction Video-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Real-time Reconstruction</h2>
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/Supplementary_Video_Sub_01.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- End Real-time Reconstruction Video -->
+
+  <!-- Overview Image-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Overview</h2>
+        <img src="static/images/pipeline.png" alt="MY ALT TEXT" />
+        <h2 class="subtitle has-text-justified">
+          Overview of our method. Left: we force each Gaussian to be either opaque or nearly transparent, and the depth
+          is
+          rendered differently from the color using the opaque Gaussian, so that a single opaque Gaussian can well fit a
+          local
+          region of the surface, yielding a compact Gaussian representation fitting 3D surfaces with much fewer
+          Gaussians. Right:
+          we compute the color error map, depth error map, and light transmission map to determine where to add opaque
+          Gaussians
+          or transparent Gaussians. we only optimize the unstable Gaussians, and only render the pixels occupied by them
+          for
+          optimization.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End Overview Image -->
+
+
+  <!-- Method Video-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Method</h2>
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/Supplementary_Video_Sub_02.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- End Method Video -->
+
+
+  <!-- Comparison Video-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Comparison</h2>
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/Supplementary_Video_Sub_03.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- End Comparison Video -->
+
+
+  <!-- Paper poster -->
+  <!-- <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title">Poster</h2>
+
+        <iframe src="static/pdfs/sample.pdf" width="100%" height="550">
+        </iframe>
+
+      </div>
+    </div>
+  </section> -->
+  <!--End paper poster -->
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{peng2024rtgslam,
+        author    = {Zhexi Peng and Tianjia Shao and Liu Yong and Jingke Zhou and Yin Yang and Jingdong Wang and Kun Zhou},
+        title     = {RTG-SLAM: Real-time 3D Reconstruction at Scale using Gaussian Splatting},
+        booktitle  = {ACM SIGGRAPH Conference Proceedings, Denver, CO, United States, July 28 - August 1, 2024},
+        year      = {2024},
+      }</code></pre>
+    </div>
+  </section>
+  <!--End BibTex citation -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the template of this
+              website.
+
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
