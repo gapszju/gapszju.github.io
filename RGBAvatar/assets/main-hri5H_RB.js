@@ -415,7 +415,7 @@ We show 10 out of 20 blendshapes learned by our method for two subjects. The ble
 | MonoGaussianAvatar  | 9h         | 17         | 29.27      | 0.9475     | **0.0704** |
 | GaussianBlendShapes | 20min      | 267        | 30.35      | 0.9497     | 0.0876     |
 | **RGBAvatar (offline)** | **81s**    | **398**    | **31.19**  | **0.9564** | 0.0737     |
-| **RGBAvatar (online)**  | N/A        | **398**    | 30.86      | 0.9537     | 0.0766     |
+| **RGBAvatar (online)**  |         | **398**    | 30.86      | 0.9537     | 0.0766     |
 
 We report offline training time and runtime FPS on an RTX 3090, where runtime includes both rendering and animation. Evaluation is conducted on the INSTA dataset in both offline and online settings, using *PSNR/SSIM/LPIPS* as metrics. Each video contains *~3000 frames* and lasts for about two minutes.
 `},{title:"Video",text:`</div>
