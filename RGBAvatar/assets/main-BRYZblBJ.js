@@ -394,7 +394,7 @@ RGBAvatar represents the head avatar with a base model $G_0$ and a reduced set o
   </div>
 </div>
 
-To accelerate the training process, we propose a batch-parallel Gaussian rasterization method. We split Gaussian Splatting into two stages and perform GPU-CPU synchronization only once per training step. We achieve 100\\% Stream Processor utilization and 630 images per second training throughput on a single RTX 3090 GPU.
+To accelerate the training process, we propose a batch-parallel Gaussian rasterization method. We split Gaussian Splatting into two stages and perform GPU-CPU synchronization only once per training step. We achieve 100\\% Stream Processor utilization and *630 images per second* training throughput on a single RTX 3090 GPU.
 `},{title:"Results",text:`### Blendshape Visualization
 
 </div>
@@ -414,9 +414,10 @@ We show 10 out of 20 blendshapes learned by our method for two subjects. The ble
 | FlashAvatar         | 17min      | 304        | 28.04      | 0.9168     | 0.1045     |
 | MonoGaussianAvatar  | 9h         | 17         | 29.27      | 0.9475     | **0.0704** |
 | GaussianBlendShapes | 20min      | 267        | 30.35      | 0.9497     | 0.0876     |
-| **RGBAvatar**       | **81s**    | **398**    | **31.19**  | **0.9564** | 0.0737     |
+| **RGBAvatar (offline)** | **81s**    | **398**    | **31.19**  | **0.9564** | 0.0737     |
+| **RGBAvatar (online)**  | N/A        | **398**    | 30.86      | 0.9537     | 0.0766     |
 
-We report the training time and run time FPS on RTX 3090. Note that we train GaussianAvatars for 40k iterations for monocular setting. And the run time calculation includes both rendering and animation. We report *PSNR/SSIM/LPIPS* on test set of INSTA dataset.
+We report offline training time and runtime FPS on an RTX 3090, where runtime includes both rendering and animation. Evaluation is conducted on the INSTA dataset in both offline and online settings, using *PSNR/SSIM/LPIPS* as metrics. Each video contains *~3000 frames* and lasts for about two minutes.
 `},{title:"Video",text:`</div>
   <video src="video_public_s.mp4" controls uk-video="autoplay: False"></video>
 </div>
