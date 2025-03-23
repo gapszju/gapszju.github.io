@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Single-View 3D Hair Modeling with Clumping Optimization">
+  <meta name="keywords"
+    content="Hair modeling, Single-view reconstruction, Differentiable rendering, Contrastive learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Single-View 3D Hair Modeling with Clumping Optimization</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Single-View 3D Hair Modeling with Clumping Optimization</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Zhongsi Tang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Jiahao Geng</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="">Yanlin Weng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Youyi Zheng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Kun Zhou</a><sup>1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Zhejiang University,</span>
+              <span class="author-block"><sup>2</sup>Faceunity Inc.</span>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2011.12948"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2011.12948"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> -->
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span> -->
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/gapszju/ClumpingHair"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- Supplementary Link. -->
+                <span class="link-block">
+                  <a href="./static/files/ClumpingHairSupplementary.zip"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Supplementary</span>
+                    </a>
+              </div>
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <img src="static/images/teaser.jpg">
+      <div class="content has-text-justified">
+        <p>
+          Given an image, we obtain an initial hairstyle using existing methods and then transform it into our
+          parametric hair representation combining guide
+          strands and clumping modifier. We optimize the guide strands and clumping parameters using a differentiable
+          renderer. This ensures that the resulting hairstyle's
+          contour, growth direction and clumping characteristics match the input image. From left to right, the sequence
+          includes the input image, initial hairstyle,
+          optimized hairstyle, and the details and projections of both hairstyles.
+        </p>
+      </div>
+  </section>
+  <!-- <section class="hero teaser">
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <h2 class="title is-3">Video</h2>
+      <div class="box has-background-grey-light">
+        <video id="teaser" controls height="100%">
+          <source src="./static/videos/demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      </div>
+  </section> -->
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Deep learning advancements have enabled the generation of visually plausible hair geometry from a single
+              image,
+              but these still do not meet the realism required for further applications (e.g., high quality hair
+              rendering and simulation).
+              One of the essential element that is missing in traditional single-view hair reconstruction methods is the
+              clumping effect of
+              hair, which is influenced by scalp secretions and oils, and is a key ingredient for high-quality hair
+              rendering and simulation.
+            </p>
+            <p>
+              Observing practices in industrial production like XGen, which simulates realistic hair clumping by
+              allowing artists to adjust
+              clumping parameters, we aim to integrate these clumping effects into single-view hair reconstruction. We
+              introduce a novel hair
+              representation model which exploits guide strands and clumping modifiers to transform the output of
+              existing methods into models
+              that consider hair clumping.
+              We developed a neural model called clumpNet using contrastive learning to evaluate the multimodal
+              similarity between the geometric features of 3D hair and the input image.
+              Furthermore, we introduce a differentiable framework that utilizes line-based soft rasterization along
+              with clumpNet for
+              optimizing hair parameters. By adjusting guide strands positions and clumping parameters to match the
+              hair’s natural growth
+              and clumping in the image, we are able to significantly enhance realism in rendering and simulation.
+              Our method demonstrates superior performance both qualitatively and quantitatively compared to
+              state-of-the-art techniques.
+            </p>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Video</h2>
+            <div class="box has-background-grey-light">
+              <video id="teaser" controls height="100%">
+                <source src="./static/videos/demo.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+  <!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <!-- <div class="content has-text-centered">
+        <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div> -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website source code based on the <a href="https://nerfies.github.io/">Nerfies</a> project page. If you
+              want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit
+              them appropriately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
