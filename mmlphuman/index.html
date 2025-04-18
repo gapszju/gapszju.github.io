@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Real-time High-fidelity Gaussian Human Avatars with Position-based Interpolation of Spatially Distributed MLPs.">
+  <meta name="keywords" content="Human Animation, Gaussian Splatting, Real-time, High-fidelity">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="a6CdlNlWxlXY2YQNw0V_tZh-ruXR3Gy9h_YQr1P9f4w" />
+  <title>Real-time High-fidelity Gaussian Human Avatars with Position-based Interpolation of Spatially Distributed MLPs
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-size-3 publication-title">Real-time High-fidelity Gaussian Human Avatars with
+              Position-based Interpolation of Spatially Distributed MLPs</h1>
+            <div class="is-size-4 publication-authors">
+              <b>CVPR 2025 (Highlight)</b>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Youyi Zhan<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://tianjiashao.com/">Tianjia Shao</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://yangzzzy.github.io/">Yin Yang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://kunzhou.net/">Kun Zhou</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>State Key Lab of CAD&CG, Zhejiang University,</span>
+              <span class="author-block"><sup>2</sup>University of Utah</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="./static/paper/zhan2025realtime.pdf" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2504.12909" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://youtu.be/TeTO4tYRdjw"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/1231234zhan/mmlphuman" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/teaser.jpg" class="interpolation-image" alt="Teaser image." />
+        <h2 class="is-size-6 subtitle has-text-centered">
+          Our method can model high-fidelity human avatars that can be animated under novel poses and rendered in
+          real-time. Compared to the state-of-the-art method AnimatableGaussians, our approach can recover finer details
+          while achieving significantly faster rendering speed (166 fps) under novel views and novel poses.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Many works have succeeded in reconstructing Gaussian human avatars from multi-view videos. However, they
+              either struggle to capture pose-dependent appearance details with a single MLP, or rely on a
+              computationally intensive neural network to reconstruct high-fidelity appearance but with rendering
+              performance degraded to non-real-time. We propose a novel Gaussian human avatar representation that can
+              reconstruct high-fidelity pose-dependence appearance with details and meanwhile can be rendered in real
+              time. Our Gaussian avatar is empowered by spatially distributed MLPs which are explicitly located on
+              different positions on human body. The parameters stored in each Gaussian are obtained by interpolating
+              from the outputs of its nearby MLPs based on their distances. To avoid undesired smooth Gaussian property
+              changing during interpolation, for each Gaussian we define a set of Gaussian offset basis, and a linear
+              combination of basis represents the Gaussian property offsets relative to the neutral properties. Then we
+              propose to let the MLPs output a set of coefficients corresponding to the basis. In this way, although
+              Gaussian coefficients are derived from interpolation and change smoothly, the Gaussian offset basis is
+              learned freely without constraints. The smoothly varying coefficients combined with freely learned basis
+              can still produce distinctly different Gaussian property offsets, allowing the ability to learn
+              high-frequency spatial signals. We further use control points to constrain the Gaussians distributed on a
+              surface layer rather than allowing them to be irregularly distributed inside the body, to help the human
+              avatar generalize better when animated under novel poses. Compared to the state-of-the-art method, our
+              method achieves better appearance quality with finer details while the rendering speed is significantly
+              faster under novel views and novel poses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <section class="hero">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h2 class="title">Overview</h2>
+        <div class="content has-text-centered">
+          <video id="overview-video" controls muted preload playsinline width="95%">
+            <source src="./static/videos/overview.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Pipeline</h2>
+        <img src="./static/images/pipeline.jpg" class="interpolation-image" alt="Pipeline." />
+        <div class="content has-text-justified">
+          <p>
+            <b>(a)</b> We define the spatially distributed MLPs on anchor points, which are uniformly sampled on the
+            template mesh. Each MLP takes the pose θ as input and outputs the anchor coefficients w<sub>a</sub>.
+          </p>
+          <p><b>(b)</b> The Gaussian coefficients w<sub>g</sub> are interpolated from the coefficients of three nearest
+            anchor
+            points. </p>
+          <p><b>(c)</b> The Gaussian property offsets are obtained by linearly combining Gaussian offset basis using
+            Gaussian coefficients. Then the neutral Gaussian properties are added with Gaussian property offsets to
+            model the human appearance under pose θ. </p>
+          <p>Finally the Gaussians are transformed to the pose θ and rasterized to produce high-fidelity images. Note
+            that the Gaussian position offset δx is obtained through control point interpolation.</p>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Results</h2>
+        <div class="content has-text-centered">
+          <video id="results-video" controls muted preload playsinline width="95%">
+            <source src="./static/videos/results.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Interactive Viewer</h2>
+        <div class="content has-text-centered">
+          <video id="interactive-video" controls muted preload playsinline width="95%">
+            <source src="./static/videos/interactive.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Video</h2>
+        <div class="content has-text-justified">
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/TeTO4tYRdjw" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{zhan2025realtime,
+      title={Real-time High-fidelity Gaussian Human Avatars with Position-based Interpolation of Spatially Distributed MLPs},
+      author={Zhan, Youyi and Shao, Tianjia and Yang, Yin and Zhou, Kun},
+      journal={arXiv preprint arXiv:2504.12909},
+      year={2025}
+}
+</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+              template of this website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
