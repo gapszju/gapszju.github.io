@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Interactive Rendering of Relightable and Animatable Gaussian Avatars.">
+  <meta name="keywords"
+    content="Human Animation, Gaussian Splatting, Interactive, High-fidelity, Gaussian Avatars, Relighting, RAGA, InteractRAGA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="a6CdlNlWxlXY2YQNw0V_tZh-ruXR3Gy9h_YQr1P9f4w" />
+  <title>Interactive Rendering of Relightable and Animatable Gaussian Avatars
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-size-2 publication-title">Interactive Rendering of Relightable and Animatable Gaussian
+              Avatars</h1>
+            <div class="is-size-4 publication-authors">
+              <b>TVCG 2025</b>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Youyi Zhan<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://tianjiashao.com/">Tianjia Shao</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://drhewang.com/index.html">He Wang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://yangzzzy.github.io/">Yin Yang</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://kunzhou.net/">Kun Zhou</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>State Key Lab of CAD&CG, Zhejiang University,</span>
+
+              <span class="author-block"><sup>2</sup>University College London,</span>
+              <span class="author-block"><sup>3</sup>University of Utah</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://ieeexplore.ieee.org/document/11006750"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2407.10707" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://www.youtube.com/watch?v=hCNf8zVQWLU"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/1231234zhan/InteractRAGA"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="content has-text-centered">
+          <video id="overview-video" controls muted preload playsinline width="90%">
+            <source src="./static/videos/overview.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h2 class="is-size-5 subtitle has-text-centered">
+          Given multiview or monocular videos of a human, our method can reconstruct and animate the human in novel
+          poses, novel lighting, and novel views. The fast rendering speed enables us to animate the human avatar
+          interactively.
+        </h2>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Creating relightable and animatable avatars from multi-view or monocular videos is a challenging task for
+              digital human creation and virtual reality applications. Previous methods rely on neural radiance fields
+              or ray tracing, resulting in slow training and rendering processes. By utilizing Gaussian Splatting, we
+              propose a simple and efficient method to decouple body materials and lighting from sparse-view or
+              monocular avatar videos, so that the avatar can be rendered simultaneously under novel viewpoints, poses,
+              and lightings at interactive frame rates (6.9 fps). Specifically, we first obtain the canonical body mesh
+              using a signed distance function and assign attributes to each mesh vertex. The Gaussians in the canonical
+              space then interpolate from nearby body mesh vertices to obtain the attributes. We subsequently deform the
+              Gaussians to the posed space using forward skinning, and combine the learnable environment light with the
+              Gaussian attributes for shading computation. To achieve fast shadow modeling, we rasterize the posed body
+              mesh from dense viewpoints to obtain the visibility. Our approach is not only simple but also fast enough
+              to allow interactive rendering of avatar animation under environmental light changes. Experiments
+              demonstrate that, compared to previous works, our method can render higher quality results at a faster
+              speed on both synthetic and real datasets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <section class="hero">
+    <div class="container is-max-desktop">
+
+      <div class="hero-body">
+        <h2 class="title">Pipeline</h2>
+        <img src="./static/images/pipeline.jpg" class="interpolation-image" alt="Pipeline." />
+        <div class="content has-text-justified">
+          Starting from the canonical mesh reconstructed from SDF, Gaussians are initialized near the mesh surface. The
+          attributes of the Gaussians are interpolated from the neighboring vertices. Then Gaussians are deformed to the
+          posed space and rasterized to produce an image. Visibility is obtained from multi-view rendering of the posed
+          mesh to model shadows. Through photometric loss and other constraints, the environmental light and body
+          materials can be separated for further relighting.
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Relighting Results</h2>
+        <div class="content has-text-centered">
+          <img src="./static/images/gallery.jpg" class="interpolation-image" alt="Gallery." />
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Interactive Results</h2>
+        <div class="content has-text-centered">
+          <video id="interactive-video" controls muted preload playsinline width="90%">
+            <source src="./static/videos/interactive_01.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="content has-text-centered">
+          <video id="interactive-video" controls muted preload playsinline width="90%">
+            <source src="./static/videos/interactive_02.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Video</h2>
+        <div class="content has-text-justified">
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/hCNf8zVQWLU" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{zhan2024interactive,
+  title={Interactive Rendering of Relightable and Animatable Gaussian Avatars},
+  author={Zhan, Youyi and Shao, Tianjia and Wang, He and Yang, Yin and Zhou, Kun},
+  journal={arXiv preprint arXiv:2407.10707},
+  year={2024}
+}
+</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+              template of this website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
