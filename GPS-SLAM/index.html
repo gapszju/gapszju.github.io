@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Gaussian-Plus-SDF SLAM: High-fidelity 3D Reconstruction at 150+ fps</title>
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Gaussian-Plus-SDF SLAM: High-fidelity</br> 3D Reconstruction at
+              150+ fps</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper publication -->
+              <!-- <h1 style="font-size:1.5rem; color:#6e6e6e; font-weight: 550;"> ACM SIGGRAPH 2024<br></h1> -->
+              <!-- Paper authors -->
+              <span class="author-block">
+                Zhexi Peng<sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="http://kunzhou.net/" target="_blank">Kun Zhou</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://tianjiashao.com/" target="_blank">Tianjia Shao</a><sup>1,2</sup>,</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>State Key Lab of CAD&CG, Zhejiang University</br>
+                <sup>2</sup>Hangzhou Research Institute of AI and Holographic Technology
+              </span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2509.11574" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- Supplementary PDF link -->
+                <!-- <span class="link-block">
+                  <a href="static/pdfs/RTG-SLAM_supplementary.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Supplementary</span>
+                  </a>
+                </span> -->
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/MisEty/GPS-SLAM" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/MisEty/GPS-SLAM" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Data (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser Image-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/illustration.png" alt="MY ALT TEXT" />
+        <h2 class="subtitle has-text-centered">
+          In our Gaussian-Plus-SDF representation, the SDF provides
+          3D structure and initial color, while the 3D Gaussians are optimized
+          to correct residual color errors. This allows us to achieve high-fidelity
+          reconstruction with a small number of Gaussians, enabling ultra-fast
+          scene reconstruction.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser Image -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              While recent Gaussian-based SLAM methods achieve photorealistic reconstruction from RGB-D data, their
+              computational performance remains a critical bottleneck. State-of-the-art techniques operate at less than
+              20 fps, significantly lagging behind geometry-centric approaches like KinectFusion (hundreds of fps). This
+              limitation stems from the heavy computational burden: modeling scenes requires numerous Gaussians and
+              complex iterative optimization to fit RGB-D data, where insufficient Gaussian counts or optimization
+              iterations cause severe quality degradation. To address this, we propose a Gaussian-SDF hybrid
+              representation, combining a colorized Signed Distance Field (SDF) for smooth geometry and appearance with
+              3D Gaussians to capture underrepresented details. The SDF is efficiently constructed via RGB-D fusion (as
+              in geometry-centric methods), while Gaussians undergo iterative optimization. Our representation enables
+              drastic Gaussian reduction (50% fewer) by avoiding full-scene Gaussian modeling, and efficient Gaussian
+              optimization (75% fewer iterations) through targeted appearance refinement. Building upon this
+              representation, we develop GPS-SLAM (Gaussian-Plus-SDF SLAM), a real-time 3D reconstruction system
+              achieving over 150 fps on real-world Azure Kinect sequences -- delivering an order-of-magnitude speedup
+              over state-of-the-art techniques while maintaining comparable reconstruction quality. The source code and
+              data are available at https://gapszju.github.io/GPS-SLAM.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Real-time Reconstruction Video-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Real-time Reconstruction in 15s</h2>
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/realtime_scan.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- End Real-time Reconstruction Video -->
+
+  <!-- Overview Image-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Overview</h2>
+        <img src="static/images/pipeline.png" alt="MY ALT TEXT" />
+        <h2 class="subtitle has-text-justified">
+          Overview of our GPS-SLAM system. Given an RGB-D image as input, a standard SDF fusion is performed to update
+          the SDF and color values in a global hash table. Then, we sample pixels within regions exhibiting significant
+          color errors and add Gaussians to these locations. Online optimization for 3D Gaussians is executed based on
+          our Gaussian-Plus-SDF rendering.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End Overview Image -->
+
+  <!-- Rendering Image-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Gaussian-Plus-SDF Rendering</h2>
+        <img src="static/images/render.png" alt="MY ALT TEXT" />
+        <h2 class="subtitle has-text-justified">
+          An illustration of our Gaussian-Plus-SDF representation and rendering process. Our representation consists of
+          a SDF volume \( S \) and
+          a set of 3D Gaussians
+          \( G = \{ p_i, \sigma_i, r_i, s_i, SH_i \}_{i=1}^M \),
+          with the properties of position \( p_i \), maximum opacity \( \sigma_i \), scaling \( s_i \), rotation \( r_i
+          \) and SH
+          coefficients \( SH_i \). The rendering process consists of two passes. Firstly, a standard per-pixel raycast
+          is
+          performed on the SDF volume to
+          obtain a color map \( C_t \) and depth map \( D_t \). Secondly, we splat the Gaussians to the screen, and
+          their colors and
+          weights are blended together
+          order-independently with depth testing based on the SDF-rendered depth map \( D_t \). A small positive
+          threshold \( \epsilon \) is
+          used to prevent wrong
+          truncation. The accumulated Gaussian color and SDF-rendered color are combined with a weighted average to get
+          the final image.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End Rendering Image -->
+
+
+  <!-- Comparison Video-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Rendering Quality Comparison</h2>
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/act_room_comp.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- End Comparison Video -->
+
+  <!-- Comparison Image-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">System Performance Comparison</h2>
+        <img src="static/images/performance.png" alt="MY ALT TEXT" />
+      </div>
+    </div>
+  </section>
+  <!-- End Overview Image -->
+
+
+  <!-- Comparison Video-->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">More Results</h2>
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/full_video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- End Comparison Video -->
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{peng2025gpsslam,
+      title={Gaussian-Plus-SDF SLAM: High-fidelity 3D Reconstruction at 150+ fps}, 
+      author={Zhexi Peng and Kun Zhou and Tianjia Shao},
+      year={2025},
+      eprint={2509.11574},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2509.11574}, 
+      }</code></pre>
+    </div>
+  </section>
+  <!--End BibTex citation -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+              template of this
+              website.
+
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
