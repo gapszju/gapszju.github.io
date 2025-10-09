@@ -50,8 +50,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Gaussian-Plus-SDF SLAM: High-fidelity</br> 3D Reconstruction at
-              150+ fps</h1>
+            <h1 class="title is-1 publication-title">Gaussian-plus-SDF SLAM: High-fidelity 3D Reconstruction at 150+ fps
+            </h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper publication -->
               <!-- <h1 style="font-size:1.5rem; color:#6e6e6e; font-weight: 550;"> ACM SIGGRAPH 2024<br></h1> -->
@@ -103,17 +103,7 @@
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code (coming soon)</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="https://github.com/MisEty/GPS-SLAM" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Data (coming soon)</span>
+                    <span>Code & Data (coming soon)</span>
                   </a>
                 </span>
               </div>
@@ -131,11 +121,9 @@
       <div class="hero-body">
         <img src="static/images/illustration.png" alt="MY ALT TEXT" />
         <h2 class="subtitle has-text-centered">
-          In our Gaussian-Plus-SDF representation, the SDF provides
-          3D structure and initial color, while the 3D Gaussians are optimized
-          to correct residual color errors. This allows us to achieve high-fidelity
-          reconstruction with a small number of Gaussians, enabling ultra-fast
-          scene reconstruction.
+          In our Gaussian-plus-SDF representation, the SDF provides 3D structure and initial color, while the 3D
+          Gaussians are optimized to correct residual color errors. This allows us to achieve high-fidelity
+          reconstruction with a small number of Gaussians, enabling ultra-fast scene reconstruction.
         </h2>
       </div>
     </div>
@@ -152,19 +140,18 @@
             <p>
               While recent Gaussian-based SLAM methods achieve photorealistic reconstruction from RGB-D data, their
               computational performance remains a critical bottleneck. State-of-the-art techniques operate at less than
-              20 fps, significantly lagging behind geometry-centric approaches like KinectFusion (hundreds of fps). This
+              20 fps, significantly lagging behind geometry-based approaches like KinectFusion (hundreds of fps). This
               limitation stems from the heavy computational burden: modeling scenes requires numerous Gaussians and
-              complex iterative optimization to fit RGB-D data, where insufficient Gaussian counts or optimization
-              iterations cause severe quality degradation. To address this, we propose a Gaussian-SDF hybrid
-              representation, combining a colorized Signed Distance Field (SDF) for smooth geometry and appearance with
-              3D Gaussians to capture underrepresented details. The SDF is efficiently constructed via RGB-D fusion (as
-              in geometry-centric methods), while Gaussians undergo iterative optimization. Our representation enables
-              drastic Gaussian reduction (50% fewer) by avoiding full-scene Gaussian modeling, and efficient Gaussian
-              optimization (75% fewer iterations) through targeted appearance refinement. Building upon this
-              representation, we develop GPS-SLAM (Gaussian-Plus-SDF SLAM), a real-time 3D reconstruction system
-              achieving over 150 fps on real-world Azure Kinect sequences -- delivering an order-of-magnitude speedup
-              over state-of-the-art techniques while maintaining comparable reconstruction quality. The source code and
-              data are available at https://gapszju.github.io/GPS-SLAM.
+              complex iterative optimization to fit RGB-D data; insufficient Gaussian counts or optimization iterations
+              cause severe quality degradation. To address this, we propose a Gaussian-SDF hybrid representation,
+              combining a colorized signed distance field (SDF) for smooth geometry and appearance with 3D Gaussians to
+              capture underrepresented details. The SDF is efficiently constructed via RGB-D fusion (as in
+              geometry-based methods), while Gaussians undergo iterative optimization. Our representation enables
+              significant Gaussian reduction (50% fewer) by avoiding full-scene Gaussian modeling, and efficient
+              Gaussian optimization (75% fewer iterations) through targeted appearance refinement. Building upon this
+              representation, we develop GPS-SLAM (Gaussian-plus-SDF SLAM), a real-time 3D reconstruction system
+              achieving over 150 fps on real-world Azure Kinect sequences, faster by an order-of-magnitude than
+              state-of-the-art techniques while maintaining comparable reconstruction quality.
             </p>
           </div>
         </div>
@@ -194,10 +181,10 @@
         <h2 class="title is-3">Overview</h2>
         <img src="static/images/pipeline.png" alt="MY ALT TEXT" />
         <h2 class="subtitle has-text-justified">
-          Overview of our GPS-SLAM system. Given an RGB-D image as input, a standard SDF fusion is performed to update
-          the SDF and color values in a global hash table. Then, we sample pixels within regions exhibiting significant
+          Overview of our GPS-SLAM system. Given an RGB-D image as input, standard SDF fusion is performed to update the
+          SDF and color values in a global hash table. Then, we sample pixels within regions exhibiting significant
           color errors and add Gaussians to these locations. Online optimization for 3D Gaussians is executed based on
-          our Gaussian-Plus-SDF rendering.
+          our Gaussian-plus-SDF rendering.
         </h2>
       </div>
     </div>
@@ -211,23 +198,15 @@
         <h2 class="title is-3">Gaussian-Plus-SDF Rendering</h2>
         <img src="static/images/render.png" alt="MY ALT TEXT" />
         <h2 class="subtitle has-text-justified">
-          An illustration of our Gaussian-Plus-SDF representation and rendering process. Our representation consists of
-          a SDF volume \( S \) and
-          a set of 3D Gaussians
-          \( G = \{ p_i, \sigma_i, r_i, s_i, SH_i \}_{i=1}^M \),
-          with the properties of position \( p_i \), maximum opacity \( \sigma_i \), scaling \( s_i \), rotation \( r_i
-          \) and SH
-          coefficients \( SH_i \). The rendering process consists of two passes. Firstly, a standard per-pixel raycast
-          is
-          performed on the SDF volume to
-          obtain a color map \( C_t \) and depth map \( D_t \). Secondly, we splat the Gaussians to the screen, and
-          their colors and
-          weights are blended together
-          order-independently with depth testing based on the SDF-rendered depth map \( D_t \). A small positive
-          threshold \( \epsilon \) is
-          used to prevent wrong
-          truncation. The accumulated Gaussian color and SDF-rendered color are combined with a weighted average to get
-          the final image.
+          Gaussian-plus-SDF representation and rendering process. Our representation consists of
+          a SDF volume \( S \) and a set of 3D Gaussians \( G = \{ p_i, \sigma_i, r_i, s_i, SH_i \}_{i=1}^M \), with
+          properties: position \( p_i \), maximum opacity \( \sigma_i \), scaling \( s_i \), rotation \( r_i
+          \) and SH coefficients \( SH_i \). The rendering process consists of two passes. Firstly, a standard per-pixel
+          ray-casting is performed on the SDF volume to obtain a color map \( C_t \) and depth map \( D_t \). Secondly,
+          we splat the Gaussians to the screen, and their colors and weights are blended together independently of order
+          with depth testing based on the SDF-rendered depth map \( D_t \). A small positive threshold \( \epsilon \) is
+          used to prevent incorrect truncation. The accumulated Gaussian color and SDF-rendered color are combined as a
+          weighted average to get the final image.
         </h2>
       </div>
     </div>
