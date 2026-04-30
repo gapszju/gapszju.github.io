@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparse-to-Complete | Project Page</title>
+
+  <link rel="stylesheet" href="vendor/bulma/bulma.min.css">
+  <link rel="stylesheet" href="vendor/bulma-carousel/bulma-carousel.min.css">
+  <link rel="stylesheet" href="vendor/bulma-slider/bulma-slider.min.css">
+  <link rel="stylesheet" href="vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="vendor/academicons/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                Sparse-to-Complete: From Sparse Image Captures to Complete 3D Scenes
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><a href="#" target="_blank">Yiyang Shen</a><sup>1</sup>,</span>
+                <span class="author-block"><a href="https://yangzzzy.github.io/" target="_blank">Yin Yang</a><sup>2</sup>,</span>
+                <span class="author-block"><a href="http://kunzhou.net/" target="_blank">Kun Zhou</a><sup>1</sup>,</span>
+                <span class="author-block"><a href="http://tianjiashao.com/" target="_blank">Tianjia Shao</a><sup>1&dagger;</sup></span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>State Key Lab of CAD and CG, Zhejiang University</span><br>
+                <span class="author-block"><sup>2</sup>The University of Utah</span><br>
+                <span class="author-block"><small><sup>&dagger;</sup>Corresponding author</small></span><br>
+                <span class="author-block">SIGGRAPH 2026</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://gapszju.github.io/S2C-3D" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://gapszju.github.io/S2C-3D" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-quote-right"></i>
+                      </span>
+                      <span>BibTeX</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Method Overview</h2>
+        <div class="method-pdf-wrap">
+          <img
+            src="pipeline_new_01.png"
+            class="method-image"
+            alt="S2C-3D method overview pipeline"
+            loading="lazy">
+        </div>
+        <div class="method-steps content">
+          <p class="step-item">
+            <strong>Step 1:</strong>
+            We input a sparse set of (e.g., 4) unposed images into a feed-forward visual geometry reconstruction model
+            π<sup>3</sup> to estimate camera poses and reconstruct a point cloud, which are then used to obtain an initial set of low-quality 3D Gaussians.
+          </p>
+          <p class="step-item">
+            <strong>Step 2:</strong>
+            We create a specialized diffusion model by finetuning a pretrained diffusion model on the input and corresponding degraded images.
+            Besides, we design a camera trajectory planning scheme to obtain a camera trajectory that covers the whole scene.
+          </p>
+          <p class="step-item">
+            <strong>Step 3:</strong>
+            We repair the Gaussian-rendered images at the planned camera trajectory, and use the repaired images to optimize Gaussians for Gaussian refinement.
+            As the repaired images still have conflicts across different views, which cannot be directly used to generate high-quality Gaussians, we propose a training-free view-consistency conditioned sampling process in the diffusion model for Gaussian refinement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                We introduce S2C-3D, a novel sparse-view 3D reconstruction framework for high-fidelity and complete scene reconstruction from as few as six to eight images. Our framework features three components: a specialized diffusion model for scene-specific image restoration, a training-free view-consistency conditioned sampling process in the diffusion model for refined Gaussian optimization, and a camera trajectory planning scheme to ensure comprehensive scene coverage. The specialized diffusion model is developed by finetuning a pretrained architecture on the input views and their corresponding degraded counterparts. The adaptation to the scene distribution allows the model to repair Gaussian renderings while effectively eliminating domain gaps. Meanwhile, the trajectory planning scheme optimizes scene coverage by connecting each newly sampled camera to its two nearest neighbors. By iteratively constructing paths and retaining only those that significantly enhance visibility, the scheme establishes a trajectory that covers the entire scene. To address multi-view conflicts, the view-consistency conditioned sampling process quantifies the consistency between neighboring repaired images. This information is injected as a condition into the sampling process of the frozen diffusion model, facilitating the generation of view-consistent images without additional training. Consequently, our approach produces high-fidelity 3D Gaussians that are robust to artifacts. Experimental results demonstrate that S2C-3D outperforms state-of-the-art methods, constructing high-quality scenes that are free from missing regions, blurring, or other artifacts with very sparse inputs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="qualitative-results">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">More Qualitative Results</h2>
+        <div id="scene-tabs" class="scene-tabs"></div>
+
+        <div class="qr-layout">
+          <div class="qr-inputs">
+            <div id="input-grid" class="input-grid"></div>
+          </div>
+          <div class="qr-video-panel">
+            <div class="qr-panel-controls">
+              <button id="switch-to-video-btn" class="button is-small is-light" type="button" disabled>
+                Switch to Video
+              </button>
+            </div>
+            <video id="result-video" autoplay muted loop playsinline preload="metadata"></video>
+            <img id="result-image" alt="Selected input view" style="display:none;">
+          </div>
+        </div>
+        <p id="qr-caption" class="qr-caption"></p>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@inproceedings{sparse_to_complete_2026,
+  title     = {Sparse-to-Complete: From Sparse Image Captures to Complete 3D Scenes},
+  author    = {Yiyang Shen and Yin Yang and Kun Zhou and Tianjia Shao},
+  booktitle = {SIGGRAPH},
+  year      = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="vendor/jquery/jquery.min.js"></script>
+  <script defer src="vendor/bulma-carousel/bulma-carousel.min.js"></script>
+  <script defer src="vendor/bulma-slider/bulma-slider.min.js"></script>
+  <script defer src="static/results/manifest.js"></script>
+  <script defer src="static/js/index.js"></script>
+</body>
+</html>
