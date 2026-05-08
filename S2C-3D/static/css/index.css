@@ -162,6 +162,41 @@ body {
     display: inline-block;
 }
 
+.publication-venue.siggraph-highlight {
+    position: relative;
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 1.28rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.14), rgba(37, 99, 235, 0.03));
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+    padding: 0.7rem 1.45rem;
+    margin: 0.75rem auto 1.25rem;
+    border-radius: 999px;
+}
+
+.publication-venue.siggraph-highlight::before,
+.publication-venue.siggraph-highlight::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 56px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0), rgba(37, 99, 235, 0.7));
+    transform: translateY(-50%);
+}
+
+.publication-venue.siggraph-highlight::before {
+    right: calc(100% + 14px);
+}
+
+.publication-venue.siggraph-highlight::after {
+    left: calc(100% + 14px);
+    transform: translateY(-50%) scaleX(-1);
+}
+
 .publication-awards {
     color: #ef4444;
     width: fit-content;
