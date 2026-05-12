@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="High-Fidelity Mobile Avatars with Pruned Local Blendshapes.">
+  <meta name="keywords" content="Human Avatar, Gaussian Splatting, WebGPU, Mobile Rendering, Blendshapes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>High-Fidelity Mobile Avatars with Pruned Local Blendshapes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
+
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-size-3 publication-title">High-Fidelity Mobile Avatars with Pruned Local Blendshapes</h1>
+            <div class="is-size-4 publication-authors">
+              <b>CVPR 2026</b>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://1231234zhan.github.io/">Youyi Zhan</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://drhewang.com/">He Wang</a><sup>2,3</sup>,</span>
+              <span class="author-block">
+                <a href="https://tianjiashao.com/">Tianjia Shao</a><sup>1,4</sup>,</span>
+              <span class="author-block">
+                <a href="http://kunzhou.net/">Kun Zhou</a><sup>1,4</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>State Key Lab of CAD&amp;CG, Zhejiang University</span>
+              <span class="author-block"><sup>2</sup>University College London</span>
+              <span class="author-block"><sup>3</sup>AI Centre, University College London</span>
+              <span class="author-block"><sup>4</sup>Hangzhou Research Institute of Holographic and AI Technology</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2605.01854" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://www.youtube.com/watch?v=gj4cN6z_G80"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/1231234zhan/webavatar" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/1231234zhan/webavatar-rust"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Viewer</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://webavatar.pages.dev/demo.html" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-external-link-alt"></i>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/teaser.jpg" class="paper-image" alt="Teaser image." />
+        <h2 class="is-size-6 subtitle has-text-centered image-caption">
+          We reconstruct high-fidelity mobile avatars with pruned local blendshapes, preserving fine pose-dependent
+          appearance while enabling real-time WebGPU rendering on mobile devices.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We propose a method to reconstruct high-fidelity human avatars from multi-view video that can run on
+              mobile devices. Many works can model high-quality Gaussian-based full-body avatars from multi-view video.
+              However, these methods require heavy computation to obtain pose-dependent appearance, making deployment on
+              mobile devices very difficult. Recent methods distill from pretrained models and model pose-dependent
+              nonlinear Gaussian attributes by linearly combining global pose features with blendshapes. Although they
+              can run on mobile devices, they suffer some loss of detail. We observe that nearby Gaussians are often
+              highly correlated within a local region of the body, and can be linearly modeled with less error.
+              Therefore, we use local linear blendshapes in small body parts to capture global nonlinear changes of
+              Gaussian attributes. To further reduce computation and model size, we propose to remove blendshapes for
+              Gaussians whose attributes change little, yielding a minimal blendshape representation. Our method is an
+              end-to-end training method without a pretrained model. To make it run on multiple devices, we implement our
+              method using WebGPU. Experiments show that our method can render high-quality human avatars with better
+              details, and can reach 120 FPS at 2K resolution on mobile devices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h2 class="title">Pipeline</h2>
+        <img src="./static/images/pipeline.jpg" class="paper-image" alt="Pipeline." />
+        <div class="content has-text-justified image-caption">
+          <p>
+            Our pipeline partitions the body into local regions, predicts local pose features, applies compact local
+            blendshapes to Gaussian attributes, and prunes low-variation blendshapes for efficient WebGPU deployment.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Interactive Demo</h2>
+        <div class="content has-text-centered">
+          <div class="demo-tabs" role="tablist" aria-label="Interactive avatar subjects">
+            <button class="demo-tab is-active" type="button" data-model="" role="tab" aria-selected="true">None</button>
+            <button class="demo-tab" type="button" data-model="actor04" role="tab">actor04</button>
+            <button class="demo-tab" type="button" data-model="XG_01" role="tab">XG_01</button>
+            <button class="demo-tab" type="button" data-model="P3C1" role="tab">P3C1</button>
+            <button class="demo-tab" type="button" data-model="zzr" role="tab">zzr</button>
+          </div>
+          <div id="demo-frame-wrap" class="demo-frame-wrap">
+            <div id="demo-placeholder" class="demo-placeholder">
+              Select a subject to load the WebGPU viewer.
+            </div>
+          </div>
+          <p class="image-caption">
+            Visit the <a href="https://webavatar.pages.dev/demo.html">demo page</a> for more demo cases.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Results</h2>
+        <img src="./static/images/gallery.jpg" class="gallery-image" alt="Results gallery." />
+      </div>
+
+      <div class="hero-body">
+        <h2 class="title">Interactive Video</h2>
+        <div class="content has-text-justified">
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/gj4cN6z_G80" title="High-Fidelity Mobile Avatars video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{zhan2026high,
+  title={High-Fidelity Mobile Avatars with Pruned Local Blendshapes},
+  author={Zhan, Youyi and Wang, He and Shao, Tianjia and Zhou, Kun},
+  journal={arXiv preprint arXiv:2605.01854},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> for open sourcing the project
+              page template.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
